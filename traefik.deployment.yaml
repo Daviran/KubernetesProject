@@ -31,7 +31,7 @@ spec:
               - key: app
                 operator: In
                 values:
-                - traefik-ingress-controller
+                - traefik
             topologyKey: "kubernetes.io/hostname"
       serviceAccountName: traefik-ingress-controller
       containers:
