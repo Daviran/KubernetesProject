@@ -14,6 +14,15 @@ spec:
       labels:
         app: result
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - result-deploy
       containers:
       - name: result
         image: epitechcontent/t-dop-600-result:k8s
