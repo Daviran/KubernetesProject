@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: poll-service
+  labels:
+    app: poll
+spec:
+  selector:
+      app: poll
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+  
+  
