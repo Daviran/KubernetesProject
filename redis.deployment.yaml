@@ -1,21 +1,27 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: redis-deploy
+  namespace: default
   labels:
     app: redis
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: redis
-  template:
-    metadata:
-      labels:
-        app: redis
-    spec:
-      containers:
-      - name: redis
-        image: redis:5.0
-        ports:
-        - containerPort: 6379
+  containers:
+  - name: redis
+    image: redis:5.0
+    env:
+    - name: MASTER
+      value: "true"
+    ports:
+    - containerPort: 6379
+    restartPolicy: Always
+  volumes:
+    - name: data
+      emptyDir: {}
+    - name: config
+      configMap:
+        name: test-redis-config
+        items:
+        - key: redis-config
+          path: redis.configmap
