@@ -14,51 +14,40 @@ spec:
       labels:
         app: postgres
     spec:
-      # securityContext:
-      #   runAsUser: 0
-      #   runAsGroup: 3000
-      #   fsGroup: 2000
       containers:
       - name: postgres
         image: postgres:12
         ports:
           - containerPort: 5432
-        # envFrom:
-        # - secretRef:
-        #     name: postgres-secret
-        # - configMapRef:
-        #     name: postgres-configmap
         env:
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_USER
+              key: postgres_user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_PASSWORD
+              key: postgres_password
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_HOST
+              key: postgres_host
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_PORT
+              key: postgres_port
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_DB
+              key: postgres_db
         volumeMounts:
         - mountPath: "/var/lib/postgresql/data"
           name: postgres-pv
-        # securityContext:
-        #   allowPrivilegeEscalation: true
       volumes:
         - name: postgres-pv
           persistentVolumeClaim:
