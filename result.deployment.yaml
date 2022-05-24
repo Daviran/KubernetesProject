@@ -23,6 +23,7 @@ spec:
                 operator: In
                 values:
                 - result
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: result
         image: epitechcontent/t-dop-600-result:k8s
