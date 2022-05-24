@@ -36,10 +36,11 @@ spec:
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
-          image: traefik:v2.6
+          image: traefik:v2.7
           args:
             - --entrypoints.web.address=:80
-            - --entrypoints.admin.address=:8080
+            - --api.dashboard=true
+            - --api.insecure=true
             - --providers.kubernetesingress
           ports:
             - name: web
