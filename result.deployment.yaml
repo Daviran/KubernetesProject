@@ -22,13 +22,13 @@ spec:
               - key: app
                 operator: In
                 values:
-                - result-deploy
+                - result
       containers:
       - name: result
         image: epitechcontent/t-dop-600-result:k8s
         resources:
           limits:
-            memory: "128Mi"
+            memory: "128M"
         ports:
         - containerPort: 80
         env:
@@ -36,24 +36,25 @@ spec:
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_USER
+              key: postgres_user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_PASSWORD
+              key: postgres_password
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_HOST
+              key: postgres_host
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_PORT
+              key: postgres_port
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_DB
+              key: postgres_db
+      restartPolicy: Always

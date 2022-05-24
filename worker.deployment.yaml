@@ -25,29 +25,30 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: redis-configmap
-              key: REDIS_HOST
+              key: redis_host
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_USER
+              key: postgres_user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-secret
-              key: POSTGRES_PASSWORD
+              key: postgres_password
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_HOST
+              key: postgres_host
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_PORT
+              key: postgres_port
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               name: postgres-configmap
-              key: POSTGRES_DB
+              key: postgres_db
+      restartPolicy: Always
