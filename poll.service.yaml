@@ -8,7 +8,7 @@ spec:
   selector:
       app: poll
   ports:
-    - name: web
+    - name: http
       port: 80
       targetPort: 80
   

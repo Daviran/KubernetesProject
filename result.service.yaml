@@ -6,7 +6,7 @@ metadata:
     app: result
 spec:
   ports:
-    - name: web
+    - name: http
       port: 80
       targetPort: 80
   selector:
