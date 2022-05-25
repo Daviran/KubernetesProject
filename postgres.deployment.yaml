@@ -52,3 +52,4 @@ spec:
         - name: postgres-pv
           persistentVolumeClaim:
             claimName: postgres-pvc
+      restartPolicy: Always
