@@ -38,12 +38,12 @@ spec:
         - name: traefik
           image: traefik:v2.7
           args:
-            - --entrypoints.web.address=:80
+            - --entrypoints.http.address=:80
             - --api.dashboard=true
             - --api.insecure=true
             - --providers.kubernetesingress
           ports:
-            - name: web
+            - name: http
               containerPort: 80
             - name: admin
               containerPort: 8080

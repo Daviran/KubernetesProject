@@ -37,5 +37,5 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: redis-configmap
-              key: redis_host
+              key: REDIS_HOST
       restartPolicy: Always
