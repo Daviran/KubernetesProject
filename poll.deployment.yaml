@@ -32,10 +32,9 @@ spec:
             memory: "128M"
         ports:
         - containerPort: 80
-        env:
-        - name: REDIS_HOST
-          valueFrom:
-            configMapKeyRef:
+        envFrom:
+          - configMapRef:
+              name: postgres-configmap
+          - secretRef:
               name: redis-configmap
-              key: REDIS_HOST
       restartPolicy: Always

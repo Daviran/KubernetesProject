@@ -32,30 +32,9 @@ spec:
             memory: "128M"
         ports:
         - containerPort: 80
-        env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
+        envFrom:
+          - configMapRef:
+              name: postgres-configmap
+          - secretRef:
               name: postgres-secret
-              key: POSTGRES_USER
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secret
-              key: POSTGRES_PASSWORD
-        - name: POSTGRES_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-configmap
-              key: POSTGRES_HOST
-        - name: POSTGRES_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-configmap
-              key: POSTGRES_PORT
-        - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-configmap
-              key: POSTGRES_DB
       restartPolicy: Always
