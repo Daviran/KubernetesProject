@@ -20,3 +20,5 @@ So : define 1 load balancer, 2 databases and 3 services, two of which will be ro
 ## Environment:
 - 1 Kubernetes master and 2 nodes (workers).
 - Hosted on GKE 
+
+Epi students beware: -42 is still in place for those projects ;)
